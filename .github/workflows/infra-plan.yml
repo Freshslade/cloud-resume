@@ -1,0 +1,36 @@
+name: Terraform Plan (infra)
+
+on: 
+  push:
+    paths:
+      - 'infra/**'
+  pull_request:
+    paths:
+      - 'infra/**'
+
+jobs:
+  plan:
+    runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: infra
+    steps:
+      - name: Checkout
+      - uses: actions/checkout@v4
+
+      - name: Set up Terraform
+        uses: hashicorp/setup-terraform@v3
+        with:
+          terraform_version: 1.7.5
+
+      - name: Terraform fmt
+        run: terraform fmt -check
+
+      - name: Terraform Init
+        run: terraform init -input=false
+
+      - name: Terraform Validate
+        run: terraform validate -no-color
+
+      - name: Terraform plan (no apply yet)
+        run: terraform plan -no-color
