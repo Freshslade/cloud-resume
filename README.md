@@ -14,6 +14,31 @@ Static site hosted on S3 and delivered securely through CloudFront (OAC enabled)
 
 ![CloudFront overview](docs/images/cloudfront-overview.jpg)
 
+---
+
+## 🗂️ Project Architecture & Infrastructure
+
+Below are key screenshots showing the infrastructure this project provisions and automates.
+
+### ☁️ CloudFront Distribution
+This is the CDN layer that delivers the static site globally and integrates with the S3 bucket through Origin Access Control (OAC).
+![CloudFront Overview](docs/images/cloudfront-overview.jpg)
+
+### 🪣 S3 Static Website Hosting
+Terraform created this S3 bucket for hosting the `index.html` file.
+![S3 Hosting](docs/images/s3-index.jpg)
+
+### 🔒 Remote Backend (S3 + DynamoDB)
+Terraform stores its state remotely in S3, with DynamoDB used for state locking to prevent concurrent runs.
+![Remote State](docs/images/state-and-lock.jpg)
+
+### 🔐 IAM OIDC Role for GitHub Actions
+This IAM role and OpenID Connect provider allow GitHub Actions to deploy securely to AWS — no static access keys required.
+![IAM OIDC Role](docs/images/iam-oidc-role.jpg)
+
+### ⚙️ CI/CD Workflow
+Here’s the Terraform Apply workflow running successfully in GitHub Actions.
+![GitHub Actions Apply](docs/images/actions-apply-green.jpg)
 
 ---
 
