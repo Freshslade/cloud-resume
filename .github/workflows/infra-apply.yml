@@ -1,14 +1,14 @@
 name: Terraform Apply (infra)
 
 on:
-  workflow_dispatch:        # lets you run it manually
+  workflow_dispatch:
   push:
     branches: [ main ]
     paths:
       - 'infra/**'
 
 permissions:
-  id-token: write           # required for OIDC
+  id-token: write
   contents: read
 
 jobs:
@@ -17,27 +17,9 @@ jobs:
     defaults:
       run:
         working-directory: infra
-
     steps:
       - name: Checkout
         uses: actions/checkout@v4
 
-      - name: Set up Terraform
-        uses: hashicorp/setup-terraform@v3
-        with:
-          terraform_version: 1.7.5
-
-      - name: Configure AWS credentials (OIDC)
-        uses: aws-actions/configure-aws-credentials@v4
-        with:
-          role-to-assume: arn:aws:iam::446050219344:role/github-actions-terraform-ci
-          aws-region: us-east-1
-
-      - name: Terraform init
-        run: terraform init -input=false
-
-      - name: Terraform plan
-        run: terraform plan -no-color
-
-      - name: Terraform apply
-        run: terraform apply -auto-approve -no-color
+      - name: Sanity echo
+        run: echo "YAML is valid and steps run"
