@@ -57,5 +57,6 @@ Here are a few things I took away from it:
 ### 🧾 Author
 **Michael Slade**  
 ☁️ AWS Certified Solutions Architect • Terraform Certified • Cloud Enthusiast  
-🔗 [GitHub](https://github.com/Freshslade) | [LinkedIn][(#)](https://www.linkedin.com/in/michael-slade-563545224/)
+🔗 [GitHub](https://github.com/Freshslade) | [LinkedIn](https://www.linkedin.com/in/michael-slade-563545224/)
+
 
