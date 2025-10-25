@@ -8,6 +8,15 @@ I built this as my first end-to-end cloud automation project — not just to hos
 
 ---
 
+## Architecture Overview
+
+Static site hosted on S3 and delivered securely through CloudFront (OAC enabled).
+
+![CloudFront overview](docs/images/cloudfront-overview.jpg)
+
+
+---
+
 ### 🧭 What This Project Demonstrates
 - End-to-end Infrastructure as Code with Terraform
 - Secure remote backend (S3 + DynamoDB state locking)
