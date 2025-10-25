@@ -40,3 +40,22 @@ Here’s the Terraform Apply workflow running successfully in GitHub Actions.
 - Automated deployment using GitHub Actions + OIDC
 - Static hosting via S3 + CloudFront + ACM certificate
 - Real-world DevOps pipeline workflows (`plan` + `apply`)
+---
+
+## 🧠 Lessons Learned
+
+This project was a deep dive into real-world DevOps automation and problem solving.  
+Here are a few things I took away from it:
+
+- The importance of clean state management: Early on, I realized the value of remote state and locking — especially when refactoring infrastructure.
+- Troubleshooting is the real teacher: Many of the errors I encountered (ACM certs, OIDC permissions, backend configs) forced me to slow down and understand why the system behaved that way.
+- CI/CD doesn’t have to mean secrets: Using OpenID Connect between GitHub and AWS was an eye-opener — no credentials stored anywhere, yet full automation.
+- Terraform isn’t just about infrastructure — it’s about reproducibility: I can now destroy and rebuild this entire stack with a single command.
+- Confidence through iteration: I started this project feeling uncertain, but by working through each bug, I gained a much clearer mental model of AWS and Terraform integration.
+---
+
+### 🧾 Author
+**Michael Slade**  
+☁️ AWS Certified Solutions Architect • Terraform Certified • Cloud Enthusiast  
+🔗 [GitHub](https://github.com/Freshslade) | [LinkedIn](#)
+
