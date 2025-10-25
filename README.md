@@ -8,14 +8,6 @@ I built this as my first end-to-end cloud automation project — not just to hos
 
 ---
 
-## Architecture Overview
-
-Static site hosted on S3 and delivered securely through CloudFront (OAC enabled).
-
-![CloudFront overview](docs/images/cloudfront-overview.jpg)
-
----
-
 ## 🗂️ Project Architecture & Infrastructure
 
 Below are key screenshots showing the infrastructure this project provisions and automates.
