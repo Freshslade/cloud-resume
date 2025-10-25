@@ -40,12 +40,36 @@ resource "aws_iam_policy" "github_actions_policy" {
   policy = jsonencode({
     Version = "2012-10-17",
     Statement = [
+      # identity
       { Effect = "Allow", Action = ["sts:GetCallerIdentity"], Resource = "*" },
+
+      # hosting stack permissions
       { Effect = "Allow", Action = ["s3:*"], Resource = ["*"] },
       { Effect = "Allow", Action = ["cloudfront:*"], Resource = ["*"] },
-      { Effect = "Allow", Action = ["acm:ListCertificates", "acm:DescribeCertificate"], Resource = "*" },
+
+      # ACM read (include tags)
+      { Effect = "Allow", Action = [
+        "acm:ListCertificates",
+        "acm:DescribeCertificate",
+        "acm:ListTagsForCertificate"
+      ], Resource = "*" },
+
+      # state lock infra
       { Effect = "Allow", Action = ["dynamodb:*"], Resource = ["*"] },
-      { Effect = "Allow", Action = ["apigateway:*", "lambda:*", "logs:*"], Resource = ["*"] }
+
+      # optional for future API/Lambda work
+      { Effect = "Allow", Action = ["apigateway:*", "lambda:*", "logs:*"], Resource = ["*"] },
+
+      # IAM reads needed by Terraform during refresh/plan
+      { Effect = "Allow", Action = [
+        "iam:GetOpenIDConnectProvider",
+        "iam:ListOpenIDConnectProviders",
+        "iam:GetPolicy",
+        "iam:GetPolicyVersion",
+        "iam:GetRole",
+        "iam:ListRolePolicies",
+        "iam:ListAttachedRolePolicies"
+      ], Resource = "*" }
     ]
   })
 }
